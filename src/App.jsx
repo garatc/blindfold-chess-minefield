@@ -171,9 +171,11 @@ function ChessPiece({ type, color, size = 44 }) {
   const svg = PIECE_SVGS[color]?.[type];
   if (!svg) return null;
   return (
-    <div style={{ width: size, height: size, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-      <div style={{ transform: `scale(${size / 45})`, transformOrigin: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        {svg}
+    <div style={{ width: "85%", height: "85%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+      <div style={{ width: "100%", height: "100%", transform: `scale(1)`, transformOrigin: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <svg viewBox="0 0 45 45" style={{ width: "100%", height: "100%" }}>
+          {PIECE_SVGS[color]?.[type]?.props?.children}
+        </svg>
       </div>
     </div>
   );
