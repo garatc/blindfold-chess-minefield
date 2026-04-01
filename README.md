@@ -1,16 +1,28 @@
-# React + Vite
+# Minefield ♟️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A blindfold chess puzzle trainer. A piece is placed on the board — navigate it from its starting square to the target while avoiding mines (enemy pieces and the squares they control). Find the shortest path.
 
-Currently, two official plugins are available:
+Supports all piece types as navigators (king, queen, rook, bishop, knight) and three difficulty levels.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Play online → [garatc.github.io/blindfold-chess-minefield](https://garatc.github.io/blindfold-chess-minefield/)**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
 
-## Expanding the ESLint configuration
+Requires [Node.js](https://nodejs.org/) (v18+).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/garatc/blindfold-chess-minefield.git
+cd blindfold-chess-minefield
+npm install
+npm run dev
+```
+
+Then open [http://localhost:5173/blindfold-chess-minefield/](http://localhost:5173/blindfold-chess-minefield/) in your browser.
+
+---
+
+## Credits
+
+Chess pieces: [cburnett](https://en.wikipedia.org/wiki/User:Cburnett) — CC BY-SA 3.0
