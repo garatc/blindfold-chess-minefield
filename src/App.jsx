@@ -434,21 +434,24 @@ function RevealBoard({ puzzle, userPath, isCorrect }) {
       }
 
       cells.push(
-        <div key={k} style={{
-          width: "100%", aspectRatio: "1", display: "flex", alignItems: "center", justifyContent: "center",
-          background: bg, position: "relative",
-        }}>
-          {content}
-          {stepNumber != null && (
-            <span style={{
-              position: content ? "absolute" : "static",
-              bottom: content ? 1 : undefined, right: content ? 2 : undefined,
-              fontSize: content ? 10 : 15, fontWeight: 700,
-              color: "rgba(255,255,255,0.9)",
-              textShadow: "0 1px 3px rgba(0,0,0,0.6)",
-              lineHeight: 1,
-            }}>{stepNumber}</span>
-          )}
+        <div key={k} style={{ position: "relative", width: "100%", paddingBottom: "100%" }}>
+          <div style={{
+            position: "absolute", inset: 0,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: bg,
+          }}>
+            {content}
+            {stepNumber != null && (
+              <span style={{
+                position: content ? "absolute" : "static",
+                bottom: content ? 1 : undefined, right: content ? 2 : undefined,
+                fontSize: content ? 10 : 15, fontWeight: 700,
+                color: "rgba(255,255,255,0.9)",
+                textShadow: "0 1px 3px rgba(0,0,0,0.6)",
+                lineHeight: 1,
+              }}>{stepNumber}</span>
+            )}
+          </div>
         </div>
       );
     }
