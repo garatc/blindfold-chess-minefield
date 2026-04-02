@@ -620,6 +620,16 @@ export default function MinefieldApp() {
     color: val === current ? T.accent : T.textDim, cursor: "pointer", fontSize: 13, fontFamily: "inherit", transition: "all 0.2s",
   });
 
+  const [showRules, setShowRules] = useState(() => {
+    try { return !localStorage.getItem("minefield_rules_seen"); }
+    catch { return true; }
+  });
+
+  const closeRules = () => {
+    try { localStorage.setItem("minefield_rules_seen", "1"); } catch {}
+    setShowRules(false);
+  };
+
   if (!puzzle) return null;
 
   return (
@@ -642,6 +652,64 @@ export default function MinefieldApp() {
         .chess-piece svg { width: 100% !important; height: 100% !important; display: block; }
       `}</style>
 
+      {/* Rules Modal */}
+      {showRules && (
+        <div onClick={() => closeRules()} style={{
+          position: "fixed", inset: 0, background: "rgba(0,0,0,0.75)", zIndex: 100,
+          display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
+        }}>
+          <div onClick={e => e.stopPropagation()} style={{
+            background: T.panel, border: `1px solid ${T.panelBorder}`, borderRadius: 8,
+            padding: "28px 28px 24px", maxWidth: 480, width: "100%", maxHeight: "85vh", overflowY: "auto",
+          }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+              <div style={{ fontSize: 11, color: T.accent, letterSpacing: 3 }}>▸ HOW TO PLAY</div>
+              <button onClick={() => closeRules()} style={{
+                background: "transparent", border: "none", color: T.textDim, fontSize: 18, cursor: "pointer", fontFamily: "inherit", lineHeight: 1,
+              }}>✕</button>
+            </div>
+
+            {[
+              {
+                title: "Objective",
+                text: "Navigate your piece from its starting square to the target 🏁 in the fewest moves possible.",
+              },
+              {
+                title: "Mines",
+                text: "Enemy pieces are mines. Any square they attack is forbidden — marked in red. You cannot land on or pass through these squares.",
+              },
+              {
+                title: "Sliding pieces (queen, rook, bishop)",
+                text: "These pieces move in straight lines but cannot jump over blocked squares. If a2 is forbidden, a rook on a1 cannot reach a3 in one move — the path is physically interrupted.",
+              },
+              {
+                title: "The knight is different",
+                text: "The knight jumps — it ignores everything between start and destination. A knight on a1 can reach b3 even if a2 and b2 are forbidden, as long as b3 itself is not.",
+              },
+              {
+                title: "Entering your solution",
+                text: `List the intermediate squares + the target, separated by spaces. Example: if your knight goes a1 → c2 → e3, type "c2 e3". The starting square is optional.`,
+              },
+              {
+                title: "Scoring",
+                text: "A solution is optimal if it uses the minimum number of moves. You can also reveal the solution at any time.",
+              },
+            ].map(({ title, text }) => (
+              <div key={title} style={{ marginBottom: 18 }}>
+                <div style={{ fontSize: 10, color: T.accent, letterSpacing: 2, marginBottom: 6 }}>{title.toUpperCase()}</div>
+                <div style={{ fontSize: 13, color: T.text, lineHeight: 1.7 }}>{text}</div>
+              </div>
+            ))}
+
+            <button onClick={() => closeRules()} style={{
+              marginTop: 8, width: "100%", padding: "10px", border: `1px solid ${T.accent}`,
+              borderRadius: 4, background: "rgba(196,154,60,0.08)", color: T.accent,
+              fontSize: 13, fontFamily: "inherit", cursor: "pointer", letterSpacing: 1,
+            }}>GOT IT</button>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div style={{ width: "100%", maxWidth: 540, padding: "28px 20px 0" }}>
         <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
@@ -649,6 +717,12 @@ export default function MinefieldApp() {
             <h1 style={{ fontSize: 20, fontWeight: 600, color: T.textBright, letterSpacing: 2 }}>MINEFIELD</h1>
             <div style={{ fontSize: 10, color: T.textDim, letterSpacing: 4, marginTop: 2 }}>BLINDFOLD CHESS TRAINER</div>
           </div>
+          <button onClick={() => setShowRules(true)} style={{
+            background: "rgba(196,154,60,0.1)", border: `1px solid ${T.accent}`, borderRadius: "50%",
+            width: 30, height: 30, color: T.accent, fontSize: 15, fontWeight: 600, cursor: "pointer",
+            fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "center",
+            flexShrink: 0,
+          }}>?</button>
         </div>
         <div style={{ height: 1, background: `linear-gradient(90deg, ${T.accent}50, transparent 70%)`, margin: "12px 0 16px" }} />
       </div>
