@@ -620,13 +620,9 @@ export default function MinefieldApp() {
     color: val === current ? T.accent : T.textDim, cursor: "pointer", fontSize: 13, fontFamily: "inherit", transition: "all 0.2s",
   });
 
-  const [showRules, setShowRules] = useState(() => {
-    try { return !localStorage.getItem("minefield_rules_seen"); }
-    catch { return true; }
-  });
+  const [showRules, setShowRules] = useState(false);
 
   const closeRules = () => {
-    try { localStorage.setItem("minefield_rules_seen", "1"); } catch {}
     setShowRules(false);
   };
 
@@ -718,11 +714,10 @@ export default function MinefieldApp() {
             <div style={{ fontSize: 10, color: T.textDim, letterSpacing: 4, marginTop: 2 }}>BLINDFOLD CHESS TRAINER</div>
           </div>
           <button onClick={() => setShowRules(true)} style={{
-            background: "rgba(196,154,60,0.1)", border: `1px solid ${T.accent}`, borderRadius: "50%",
-            width: 30, height: 30, color: T.accent, fontSize: 15, fontWeight: 600, cursor: "pointer",
-            fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "center",
-            flexShrink: 0,
-          }}>?</button>
+            background: "rgba(196,154,60,0.1)", border: `1px solid ${T.accent}`, borderRadius: 4,
+            padding: "5px 12px", color: T.accent, fontSize: 11, fontWeight: 600, cursor: "pointer",
+            fontFamily: "inherit", letterSpacing: 1, flexShrink: 0,
+          }}>HOW TO PLAY</button>
         </div>
         <div style={{ height: 1, background: `linear-gradient(90deg, ${T.accent}50, transparent 70%)`, margin: "12px 0 16px" }} />
       </div>
