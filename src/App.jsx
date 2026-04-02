@@ -408,10 +408,10 @@ function RevealBoard({ puzzle, userPath, isCorrect }) {
       const isSolPath = solutionSet.has(k) && !isStart && !isGoal;
 
       let bg = light ? T.boardLight : T.boardDark;
-      if (isCtrl && !isMine) bg = "#b05040";
-      if (isUserPath) bg = isCorrect ? "#6b8f5e" : "#b05040";
-      if (!isCorrect && isSolPath && !isUserPath) bg = "#6b8f5e";
-      if (isGoal) bg = "#6b8f5e";
+      if (isCtrl && !isMine) bg = "#c47060";
+      if (isUserPath) bg = isCorrect ? "#8aad7a" : "#c47060";
+      if (!isCorrect && isSolPath && !isUserPath) bg = "#8aad7a";
+      if (isGoal) bg = "#8aad7a";
 
       let content = null;
       if (isMine) {
