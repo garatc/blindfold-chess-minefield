@@ -751,6 +751,13 @@ export default function MinefieldApp() {
         {phase === PHASES.BRIEFING && (
           <div style={{ animation: "fadeUp 0.3s ease" }}>
             <div style={{
+              background: "rgba(196,154,60,0.06)", border: `1px solid rgba(196,154,60,0.2)`,
+              borderRadius: 6, padding: "10px 16px", marginBottom: 10,
+              fontSize: 12, color: T.textDim, lineHeight: 1.6, textAlign: "center",
+            }}>
+              Navigate your piece from <span style={{ color: T.textBright }}>start</span> to <span style={{ color: T.textBright }}>target 🏁</span> — avoid squares controlled by enemy pieces.
+            </div>
+            <div style={{
               background: T.panel, border: `1px solid ${T.panelBorder}`, borderRadius: 6,
               padding: "20px 24px", minHeight: 180,
             }}>
