@@ -2,7 +2,7 @@
 
 A growing collection of blindfold chess training games. No board to look at — pure mental visualization.
 
-**Play online → [garatc.github.io/blindfold-chess-games](https://garatc.github.io/blindfold-chess-games/)**
+**Play online → [garatc.github.io/blindfold-chess-trainer](https://garatc.github.io/blindfold-chess-trainer/)**
 
 ---
 
