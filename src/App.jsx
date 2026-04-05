@@ -386,7 +386,7 @@ function HomeScreen({ onSelect, themeBtn }) {
           <div>
             © <a href="https://github.com/garatc" target="_blank" rel="noreferrer"
               style={{ color: T.textDim, textDecoration: "none", borderBottom: `1px solid ${T.panelBorder}` }}>
-              garatc
+              github.com/garatc
             </a>
             {" · "}
             Puzzles from{" "}
